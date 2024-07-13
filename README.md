@@ -135,22 +135,25 @@ Don't use quotes around the query in any case.
 ```
 
 And that's all. With it we can ask quetions about this dataset and llm genetes the SQL for us.
-```bash
-python cli.py movie --q=List the living actors under 10 years old. 
+```commandline
+python cli.py movie --q=List the living actors under 10 years old.
+
 q: List the living actors under 10 years old.
 SELECT * FROM actors WHERE deathyear IS NULL AND birthyear > (EXTRACT(YEAR FROM CURRENT_DATE) - 10);
 ...
 ```
 
-```bash
-python cli.py movie --q=List the living actors who were born in the same year as Mel Gibson 
+```commandline
+python cli.py movie --q=List the living actors who were born in the same year as Mel Gibson
+
 q: List the living actors who were born in the same year as Mel Gibson
 SELECT * FROM actors WHERE birthyear = (SELECT birthyear FROM actors WHERE primaryname = 'Mel Gibson') AND deathyear IS NULL;
 ...
 ```
 
-```bash
-cli.py movie --q=List the deceased actors who were born in the same year as Mel Gibson. 
+```commandline
+cli.py movie --q=List the deceased actors who were born in the same year as Mel Gibson.
+
 q: List the deceased actors who were born in the same year as Mel Gibson.
 SELECT * 
 FROM actors 
@@ -161,8 +164,9 @@ AND birthyear = (SELECT birthyear
 ...
 ```
 
-```bash
+```commandline
 python cli.py movie --q=What is the name, date of birth, and age of the oldest living actor born in the 70s? 
+
 q: What is the name, date of birth, and age of the oldest living actor born in the 70s?
 SELECT primaryname, birthyear, (2023 - birthyear) AS age 
 FROM actors 
