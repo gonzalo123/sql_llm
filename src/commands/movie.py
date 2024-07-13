@@ -14,7 +14,7 @@ def run(q):
     click.echo(sql)
     click.echo('')
     if sql:
-        conn = get_conn(DSN, named=True, autocommit=True)
+        conn = get_conn(DSN)
         db = Db(get_cursor(conn=conn))
         data = db.fetch_all(sql)
         for row in data:
