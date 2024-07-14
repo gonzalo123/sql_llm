@@ -21,7 +21,6 @@ COPY init.sql /docker-entrypoint-initdb.d/
 
 Next, we will set up the database and import the CSV data into an 'actors' table using the Docker entrypoint. Below is how we configure the Docker entrypoint script to initialize the PostgreSQL database and import the CSV data:
 
-bash
 
 ```sql
 CREATE TABLE actors (
